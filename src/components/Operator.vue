@@ -1,10 +1,8 @@
 <script setup>
-const props = defineProps({
-  campo1: Number,
-  campo2: Number,
-  calcular: Function, // função recebida por prop
-  operacao: String,
-});
+const props = defineProps({ calcular: Function });
+const x = defineModel("x");
+const y = defineModel("y");
+const op = defineModel("op");
 </script>
 
 <template>
@@ -16,7 +14,7 @@ const props = defineProps({
           type="number"
           class="form-control text-center"
           placeholder="Insira um valor"
-          v-model="props.campo1"
+          v-model="x"
           @input="props.calcular"
         />
         <!-- v-model: conecta dados do formulário -->
@@ -24,11 +22,7 @@ const props = defineProps({
       </div>
       <div class="col-md-2 text-center">
         <label>Operador</label>
-        <select
-          class="form-select"
-          v-model="props.operacao"
-          @change="props.calcular"
-        >
+        <select class="form-select" v-model="op" @change="props.calcular">
           <!-- @change: atualiza os dados APÓS seleção de campo -->
           <option value="+">+</option>
           <option value="-">-</option>
@@ -42,7 +36,7 @@ const props = defineProps({
           type="number"
           class="form-control text-center"
           placeholder="Insira um valor"
-          v-model="props.campo2"
+          v-model="y"
           @input="props.calcular"
         />
       </div>

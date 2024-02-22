@@ -35,10 +35,10 @@ const calcular = () => {
   <div class="container">
     <Title></Title>
     <Operator
-      :campo1="campo1"
-      :operacao="operacao"
-      :campo2="campo2"
-      :calcular="calcular()"
+      v-model:x="campo1"
+      v-model:op="operacao"
+      v-model:y="campo2"
+      :calcular="calcular"
     ></Operator>
     <Result :resultado="resultado"></Result>
   </div>
